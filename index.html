@@ -9,7 +9,7 @@
       background-color: #ffe6f0;
       height: 100vh;
       overflow: hidden;
-      position: relative; /*ADD THIS*/
+      position: relative; /* allows absolute positioning of No button */
     }
     h1 {
       margin-top: 80px;
@@ -28,6 +28,7 @@
     #no {
       background-color: #ccc;
       position: absolute;
+      z-index: 10; /* ensures No button is on top */
     }
     #meme {
       display: none;
@@ -41,47 +42,34 @@
 
   <br><br>
 
-  <button id="yes" onclick="yesClicked()">Obviously😍♾️💖</button>
-  <button id="no" onmouseover="moveNo()">Nahhhh🙄</button>
+  <button id="yes" onclick="yesClicked()">Obviously 😍♾️💖</button>
+  <button id="no" onmouseover="moveNo()">Uhh No 🙄</button>
 
-<div id="meme" style="display:none; text-align:center; margin-top:20px;">
-  <h2>I Love You Spots😍</h2>
+  <div id="meme">
+    <h2>I LOve You Spots😍♾️</h2>
+    <!-- MEME 1: Funny thumbs-up reaction -->
+    <img id="meme1" src="https://media.giphy.com/media/OkJat1YNdoD3W/giphy.gif" width="250" alt="Funny thumbs up">
+  </div>
 
-  <!-- MEME 1: I Love You Spots -->
-  <img id="meme1" src="https://media.giphy.com/media/OkJat1YNdoD3W/giphy.gif" width="250" alt="I Love You Spots">
-</div>
+  <script>
+    function moveNo() {
+      const noBtn = document.getElementById("no");
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+      noBtn.style.position = "absolute";
+      noBtn.style.zIndex = "10";
+    }
 
-<script>
-function moveNo() {
-  const noBtn = document.getElementById("no");
-  const x = Math.random() * (window.innerWidth - 100);
-  const y = Math.random() * (window.innerHeight - 100);
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
-  noBtn.style.position = "absolute";
-  noBtn.style.zIndex = "10"; // always on top
-}
+    function yesClicked() {
+      // Show the meme container
+      document.getElementById("meme").style.display = "block";
 
-function yesClicked() {
-  // show the meme container
-  document.getElementById("meme").style.display = "block";
+      // Show the first meme immediately
+      document.getElementById("meme1").style.display = "block";
+    }
+  </script>
 
-  // show the first meme immediately
-  document.getElementById("meme1").style.display = "block";
-
-  // show the second meme and message after 2 seconds
-  setTimeout(() => {
-    const meme2 = document.getElementById("meme2");
-    meme2.style.display = "block";
-
-    let msg = document.createElement("p");
-    msg.textContent = "You got me, always & forever ❤️💃🕺";
-    msg.style.fontSize = "20px";
-    msg.style.marginTop = "10px";
-    msg.style.color = "#ff3366";
-    meme2.parentNode.appendChild(msg);
-  }, 2000);
-}
-</script>
 </body>
 </html>
