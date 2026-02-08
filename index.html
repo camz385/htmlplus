@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Be My Valentine ❤️</title>
+  <title>Will You Be My Valentine, Ceann? ❤️</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -36,17 +36,26 @@
 </head>
 <body>
 
-  <h1>Will you be my Valentine? 💘</h1>
+  <h1>Will you be my Valentine, Ceann? 💘</h1>
 
   <br><br>
 
-  <button id="yes" onclick="yesClicked()">Yes 💖</button>
-  <button id="no" onmouseover="moveNo()">No 💔</button>
+  <button id="yes" onclick="yesClicked()">Obviously😍♾️💖</button>
+  <button id="no" onmouseover="moveNo()">Nahhhh🙄</button>
 
-  <div id="meme">
-    <h2>YAYYYY 🕺💃</h2>
-    <img src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif" width="300">
-  </div>
+  <div id="meme" style="display:none; text-align:center; margin-top:20px;">
+
+  <h2>Oh snap 😏👍</h2>
+
+  <!-- MEME 1: Funny thumbs‑up reaction -->
+  <img id="meme1" src="https://media.giphy.com/media/OkJat1YNdoD3W/giphy.gif" width="250" alt="Funny thumbs up">
+
+  <br><br>
+
+  <!-- MEME 2: Couple twirling -->
+  <img id="meme2" src="https://media.tenor.com/images/0f76e38f0558a8cf82b084c3ab8b2f43/tenor.gif" width="250" style="display:none;" alt="Couple twirling">
+
+</div>
 
   <script>
     function moveNo() {
@@ -57,10 +66,29 @@
       noBtn.style.top = y + "px";
     }
 
-    function yesClicked() {
-      document.getElementById("meme").style.display = "block";
-    }
-  </script>
+   <script>
+function yesClicked() {
+  // Show the meme container
+  document.getElementById("meme").style.display = "block";
 
+  // Show the first meme immediately
+  document.getElementById("meme1").style.display = "block";
+
+  // After 2 seconds, show the second meme and a message
+  setTimeout(() => {
+    const meme2 = document.getElementById("meme2");
+    meme2.style.display = "block";
+
+    // Add a small message below the second meme
+    let msg = document.createElement("p");
+    msg.textContent = "You got me! ❤️💃🕺";
+    msg.style.fontSize = "20px";
+    msg.style.marginTop = "10px";
+    msg.style.color = "#ff3366";
+    meme2.parentNode.appendChild(msg);
+
+  }, 2000);
+}
+</script>
 </body>
 </html>
